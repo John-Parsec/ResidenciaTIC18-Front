@@ -1,12 +1,10 @@
-#caixa {
-    width: 100px;
-    height: 100px;
+body {
     background-color: black;
 }
 
 
 
-@media (min-width: 360px) and (max-width: 772px){
+@media (max-width: 772px){
     
 
     #ipad {
@@ -17,12 +15,12 @@
         display: none;
     }
 
-    #caixa {
+    body {
         background-color: red;
     }
 }
 
-@media (min-width: 1024px) and (max-width: 1100px){
+@media (min-width: 773px) and (max-width: 1100px){
     #samsung {
         display: none;
     }
@@ -31,12 +29,12 @@
         display: none;
     }
 
-    #caixa {
+    body {
         background-color: yellow;
     }
 }
 
-@media (min-width: 1200px) and (max-width: 1600px){
+@media (min-width: 1101px){
     #samsung {
         display: none;
     }
@@ -45,7 +43,7 @@
         display: none;
     }
 
-    #caixa {
+    body {
         background-color: green;
     }
 }
