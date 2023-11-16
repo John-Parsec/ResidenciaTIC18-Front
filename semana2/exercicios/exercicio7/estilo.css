@@ -1,0 +1,51 @@
+#caixa {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+}
+
+
+
+@media (min-width: 360px) and (max-width: 772px){
+    
+
+    #ipad {
+        display: none;
+    }
+
+    #notebook {
+        display: none;
+    }
+
+    #caixa {
+        background-color: red;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1100px){
+    #samsung {
+        display: none;
+    }
+
+    #notebook {
+        display: none;
+    }
+
+    #caixa {
+        background-color: yellow;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1600px){
+    #samsung {
+        display: none;
+    }
+
+    #ipad {
+        display: none;
+    }
+
+    #caixa {
+        background-color: green;
+    }
+}
