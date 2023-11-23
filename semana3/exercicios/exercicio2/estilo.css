@@ -1,0 +1,48 @@
+.container-destinos{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.roteiros-viagens{
+    margin: 1rem;
+    background-color: pink;
+    color: purple;
+    padding: 1rem;
+    border-radius: 5%;
+    
+    text-align: center;
+}
+
+.roteiros-viagens img{
+    width: 13rem;
+    height: 10rem;
+}
+
+
+.roteiro-destino{
+    margin-top: 1rem;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.roteiro-incluso{
+    list-style-type: none;
+}
+.roteiro-incluso li:before {
+    content: '✓';
+}
+
+.roteiro-preco{
+    font-weight: bold;
+}
+
+.roteiro-comprar{
+    margin-top: 1rem;
+    height: 2rem;
+    background-color: rgba(57,200,30,255);
+    border: none;
+    border-radius: 10%;;
+    color: white;
+    align-self: right;
+}
