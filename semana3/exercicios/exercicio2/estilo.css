@@ -28,6 +28,7 @@
 
 .roteiro-incluso{
     list-style-type: none;
+    text-align: left;
 }
 .roteiro-incluso li:before {
     content: '✓';
