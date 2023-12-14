@@ -1,0 +1,188 @@
+
+#header{
+    background-color: #152d59;
+    color: white;
+}
+
+#footer{
+    background-color: #152d59;
+    color: white;
+}
+
+@media (max-width: 500px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        grid-auto-rows: 1fr;
+        overflow: auto;
+    }
+
+    h1{
+        font-family: 'Playfair Display', sans-serif;
+    }
+    
+    h2{
+        font-family: 'Roboto', sans-serif;
+        border-style: none none solid none;
+        border-width: 2px;
+    }
+    
+    p{
+        font-family: 'Lato', sans-serif;
+        color: black;
+    }
+
+    #header {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+    }
+
+    #menu{
+        grid-column: 1 / -1;
+        margin-bottom: 5px;
+    }
+
+    #menu ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    #noticias {
+        grid-column: 1 / -1;
+        margin-bottom: 5px;
+    }
+
+    #destaque{
+        grid-column: 1 / -1;
+        margin-bottom: 5px;
+    }
+
+    #imagens{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #destaque img{
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: block;
+    }
+
+    #servicos{
+        margin-top: 5px;
+        grid-column: 1 / -1;
+        margin-bottom: 5px;
+    }
+
+    #resultados{
+        margin-top: 5px;
+        grid-column: 1 / -1;
+        margin-bottom: 5px;
+    }
+
+    #footer{
+        grid-column: 1 / -1;
+        grid-row: 4 / 5;
+        margin-top: 12px;
+        display: inline-block;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (min-width: 500px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-auto-rows: 1fr;
+        overflow: auto;
+    }
+
+    h1{
+        font-family: 'Playfair Display', sans-serif;
+    }
+    
+    h2{
+        font-family: 'Roboto', sans-serif;
+        border-style: none none solid none;
+        border-width: 2px;
+    }
+    
+    p{
+        font-family: 'Lato', sans-serif;
+        color: black;
+    }
+
+    #header {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    #menu{
+        grid-column: 1 / 2;
+    }
+
+    #menu ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    #noticias {
+        grid-column: 2 / 3;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #imagens{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+    }
+    
+    #destaque img{
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: block;
+    }
+
+    #servicos{
+        margin-top: 5px;
+        grid-column: 1 / 2;
+    }
+
+    #resultados{
+        margin-top: 5px;
+        grid-column: 2 / -1;
+        width: 400px;
+        margin-left: 5px;
+    }
+
+    #footer{
+        grid-column: 1 / -1;
+        grid-row: 4 / 5;
+        margin-top: 12px;
+        display: inline-block;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
