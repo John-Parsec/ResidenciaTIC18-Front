@@ -41,7 +41,7 @@ function getAcademicNews() {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch('')];
+                    return [4 /*yield*/, fetch('https://newsapi.org/v2/everything?q=education&apiKey=51c3957101c14611849218cf649251f4')];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
@@ -64,7 +64,7 @@ function getWeather() {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch('https://api.hgbrasil.com/weather?woeid=455955')];
+                    return [4 /*yield*/, fetch('https://api.hgbrasil.com/weather?woeid=455955&format=json-cors')];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
@@ -88,7 +88,7 @@ function getImgs() {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch('https://serpapi.com/search?engine=google_schola')];
+                    return [4 /*yield*/, fetch('https://api.unsplash.com/photos/random?query=education&client_id=KPVxmXt08scEj6jbpvYLX9MnwBKiFs6yHzxYHOYinc8')];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
@@ -106,32 +106,34 @@ function getImgs() {
 }
 var noticiaDiv = document.getElementById('noticias');
 var servicoDiv = document.getElementById('servicos');
-var destaqueDiv = document.getElementById('destaque');
+var imagemDiv = document.getElementById('imagens');
 function addNews(news) {
     var div = document.createElement('div');
-    div.innerHTML = "\n    <h2>".concat(news.title, "</h2>\n    <p>").concat(news.description, "</p>\n    <p>").concat(news.date, "</p>\n    ");
+    div.innerHTML = "\n    <div class=\"noticia\">\n    <h3>".concat(news.title, "</h3>\n    <p>").concat(news.description, "</p>\n    <a href=\"").concat(news.url, "\">Leia mais</a>\n    </div>\n    ");
     noticiaDiv.appendChild(div);
 }
 function addWeather(weather) {
     var div = document.createElement('div');
-    div.innerHTML = "\n        <h2>Temperatura</h2>\n        <p>Temperatura atual: ".concat(weather.temp, "</p>\n    ");
+    div.innerHTML = "\n        <p>Temperatura atual: ".concat(weather.results.temp, "</p>\n    ");
     servicoDiv.appendChild(div);
 }
 function addImg(img) {
     var imgElement = document.createElement('img');
-    imgElement.src = img.avatar;
-    imgElement.alt = "Imagem de destaque";
-    destaqueDiv.appendChild(img);
+    imgElement.src = img.urls.regular;
+    imgElement.alt = img.alt_description;
+    imagemDiv.appendChild(imgElement);
 }
 function loadNews() {
     return __awaiter(this, void 0, void 0, function () {
-        var news;
+        var news, i;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, getAcademicNews()];
                 case 1:
                     news = _a.sent();
-                    news.forEach(addNews);
+                    for (i = 0; i < 2; i++) {
+                        addNews(news['articles'][i]);
+                    }
                     return [2 /*return*/];
             }
         });
@@ -153,14 +155,24 @@ function loadWeather() {
 }
 function loadImgs() {
     return __awaiter(this, void 0, void 0, function () {
-        var imgs;
+        var i, img;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, getImgs()];
+                case 0:
+                    i = 0;
+                    i = 0;
+                    _a.label = 1;
                 case 1:
-                    imgs = _a.sent();
-                    imgs.data.forEach(addImg);
-                    return [2 /*return*/];
+                    if (!(i < 3)) return [3 /*break*/, 4];
+                    return [4 /*yield*/, getImgs()];
+                case 2:
+                    img = _a.sent();
+                    addImg(img);
+                    _a.label = 3;
+                case 3:
+                    i++;
+                    return [3 /*break*/, 1];
+                case 4: return [2 /*return*/];
             }
         });
     });
