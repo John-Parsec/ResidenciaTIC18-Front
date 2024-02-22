@@ -1,0 +1,20 @@
+#header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: aqua;
+}
+
+#main{
+    min-height: 20rem;
+}
+
+#footer{
+    background-color: black;
+    color: white;
+    height: 5rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}

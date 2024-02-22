@@ -1,0 +1,11 @@
+<h1>Lista de Pets</h1>
+<div class="appointment-list">
+    <section *ngFor="let atendimento of listaAtendimentos">
+        <h2> {{ atendimento.data}} </h2>
+        <span> Tutor: {{ atendimento.tutor }} </span>
+        <br>
+        <span> Pet: {{ atendimento.nome }} </span>
+        <br>
+        <span> Raça: {{atendimento.raca}}</span>
+    </section>
+</div>
