@@ -6,7 +6,9 @@
         <br>
         <span> Pet: {{ atendimento.nome }} </span>
         <br>
-        <button id="Detalhar">Detalhes</button>
+        <button id="Detalhar" (click)="detalharAtendimento(atendimento.id)">Detalhes</button>
         <button id="Editar">Editar</button>
+
+        <router-outlet></router-outlet>
     </section>
 </div>

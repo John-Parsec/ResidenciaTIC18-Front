@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ServiceBancoService } from '../service-banco.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-atendimentos',
@@ -9,5 +10,13 @@ import { ServiceBancoService } from '../service-banco.service'
 export class ListarAtendimentosComponent {
   listaAtendimentos = this.dataService.getAtendimentos();
 
-  constructor(private dataService: ServiceBancoService) { }
+  constructor(private dataService: ServiceBancoService, private rota: Router) { }
+
+  ngOnInit() {
+    this.listaAtendimentos = this.dataService.getAtendimentos();
+  }
+
+  detalharAtendimento(id: number) {
+    this.rota.navigate(['/detalhe', id]);
+  }
 }

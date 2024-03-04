@@ -16,4 +16,13 @@ export class ServiceBancoService {
   getAtendimentos() {
     return this.listaAtendimentos;
   }
+
+  getAtendimento(id: number): Atendimento {
+    const atendimentoEncontrado = this.listaAtendimentos.find(atendimento => atendimento.id === id);
+  
+    if (atendimentoEncontrado)
+      return atendimentoEncontrado;
+    else
+      return {} as Atendimento;
+  }
 }
