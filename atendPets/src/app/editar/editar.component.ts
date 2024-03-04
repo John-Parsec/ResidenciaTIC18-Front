@@ -11,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class EditarComponent {
   editarForm: FormGroup;
-  id: number | undefined;
+  id: string = '';
 
   constructor(private dataService: ServiceBancoService, private route: ActivatedRoute, private router: Router){
       this.editarForm = new FormGroup({
@@ -30,12 +30,25 @@ export class EditarComponent {
     });
 
     if(this.id){
-      const atendimento = this.dataService.getAtendimento(this.id);
-      this.editarForm.patchValue(atendimento);
+      this.dataService.getAtendimento(this.id).subscribe((response) => {
+        if (response.raca == ""){
+          response.raca = "SRD";
+        }
+
+        if (response.obs == null){
+          response.obs = "";
+        }
+
+        this.editarForm.setValue(response);
+      });
     }
   }
 
   onSubmit() {
+    if (this.editarForm.invalid) {
+      return;
+    }
+    
     if (this.id){
       this.dataService.editAtendimento(this.id, this.editarForm.value);
       this.router.navigate(['/listar']);

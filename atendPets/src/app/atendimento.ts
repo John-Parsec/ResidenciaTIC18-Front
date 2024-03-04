@@ -1,5 +1,5 @@
 export interface Atendimento {
-    id: number;
+    id: string;
     data: Date; 
     tutor: string;
     nome: string;

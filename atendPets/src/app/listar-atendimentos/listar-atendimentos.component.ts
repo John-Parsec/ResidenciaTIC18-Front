@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ServiceBancoService } from '../service-banco.service'
 import { Router } from '@angular/router';
+import { Atendimento } from '../atendimento';
 
 @Component({
   selector: 'app-listar-atendimentos',
@@ -8,19 +9,27 @@ import { Router } from '@angular/router';
   styleUrl: './listar-atendimentos.component.css'
 })
 export class ListarAtendimentosComponent {
-  listaAtendimentos = this.dataService.getAtendimentos();
+  listaAtendimentos:Atendimento[] = [];
 
   constructor(private dataService: ServiceBancoService, private router: Router) { }
 
   ngOnInit() {
-    this.listaAtendimentos = this.dataService.getAtendimentos();
+    this.getAtendimentos();
   }
 
-  detalharAtendimento(id: number) {
-    this.listaAtendimentos[id - 1].exibirDetalhes = !this.listaAtendimentos[id - 1].exibirDetalhes;
+  getAtendimentos() {
+    this.dataService.getAtendimentos().subscribe(
+      (atendimentos: Atendimento[]) => {
+        this.listaAtendimentos = atendimentos;
+        console.log(this.listaAtendimentos);
+      });
   }
 
-  editarAtendimento(_id: number) {
+  detalharAtendimento(id: string) {
+    this.router.navigate(['/detalhes'], { queryParams: { id: id } });
+  }
+
+  editarAtendimento(_id: string) {
     this.router.navigate(['/editar-atendimento'], { queryParams: { id: _id } });
   }
 }

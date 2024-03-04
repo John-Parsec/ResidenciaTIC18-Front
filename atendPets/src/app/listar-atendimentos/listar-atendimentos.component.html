@@ -6,14 +6,6 @@
         <br>
         <span> Data: {{ atendimento.data }} </span>
         <br>
-        <div *ngIf="atendimento.exibirDetalhes">
-            <span> Tipo de animal: {{ atendimento.tipo }}</span>
-            <br>
-            <span> Raça: {{ atendimento.raca }}</span>
-            <br>
-            <span> Observações: {{ atendimento.obs }}</span>
-            <br>
-        </div>
 
         <button id="Detalhar" (click)="detalharAtendimento( atendimento.id )">{{ atendimento.exibirDetalhes ? 'Esconder Detalhes' : 'Mostrar Detalhes' }}</button>
         <button id="Editar" (click)="editarAtendimento( atendimento.id )">Editar</button>

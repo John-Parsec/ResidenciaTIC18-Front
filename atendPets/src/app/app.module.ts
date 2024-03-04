@@ -9,9 +9,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { EditarComponent } from './editar/editar.component';
 
+import {HttpClientModule } from '@angular/common/http';
+import { DetalhesComponent } from './detalhes/detalhes.component';
+
 const rotasApp: Routes = [
   {path: 'cadastro', component: CadastrarAtendimentoComponent},
   {path: 'listar', component: ListarAtendimentosComponent},
+  {path: 'detalhes', component: DetalhesComponent},
   {path: 'editar-atendimento', component: EditarComponent},
 ]
 
@@ -20,12 +24,14 @@ const rotasApp: Routes = [
     AppComponent,
     CadastrarAtendimentoComponent,
     ListarAtendimentosComponent,
-    EditarComponent
+    EditarComponent,
+    DetalhesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(rotasApp)
   ],
   providers: [],

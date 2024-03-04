@@ -28,9 +28,7 @@ export class CadastrarAtendimentoComponent {
       return;
     }
     
-    const dados = this.cadastroForm.value;
-    dados.id = this.dataService.getAtendimentos().length + 1;
-    dados.exibirDetalhes = false;
+    var dados = this.cadastroForm.value!;
 
     this.dataService.addAtendimento(dados);
     this.cadastroForm.reset();

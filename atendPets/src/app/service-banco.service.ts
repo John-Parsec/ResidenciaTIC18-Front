@@ -1,5 +1,7 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Atendimento } from './atendimento';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,26 +9,46 @@ import { Atendimento } from './atendimento';
 export class ServiceBancoService {
 
   listaAtendimentos: Atendimento[] = [];
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   addAtendimento(atendimento: Atendimento) {
-    this.listaAtendimentos.push(atendimento);
+    this.http.post('https://p014-ba862-default-rtdb.firebaseio.com/atendimentos.json', atendimento).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   getAtendimentos() {
-    return this.listaAtendimentos;
+    return this.http.get('https://p014-ba862-default-rtdb.firebaseio.com/atendimentos.json').pipe(
+      map((response: any) => {
+        const atendimentos: Atendimento[] = [];
+        for (const key in response) {
+          if (response.hasOwnProperty(key)) {
+            atendimentos.push({ ...(response as any)[key], id: key });
+          }
+        }
+        return atendimentos;
+      }
+      )
+    );
   }
 
-  getAtendimento(id: number): Atendimento {
-    const atendimentoEncontrado = this.listaAtendimentos.find(atendimento => atendimento.id === id);
-  
-    if (atendimentoEncontrado)
-      return atendimentoEncontrado;
-    else
-      return {} as Atendimento;
+  getAtendimento(id: string) {
+    return this.http.get<Atendimento>(`https://p014-ba862-default-rtdb.firebaseio.com/atendimentos/${id}.json`);
   }
 
-  editAtendimento(id: number, atendimento: Atendimento) {
-    this.listaAtendimentos[id - 1] = atendimento;
+  editAtendimento(id: string, atendimento: Atendimento) {
+    this.http.put(`https://p014-ba862-default-rtdb.firebaseio.com/atendimentos/${id}.json`, atendimento).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

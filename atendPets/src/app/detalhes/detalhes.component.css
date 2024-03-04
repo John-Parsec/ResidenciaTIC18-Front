@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+span {
+    font-size: 18px;
+    color: #666;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+br {
+    line-height: 20px;
+}
