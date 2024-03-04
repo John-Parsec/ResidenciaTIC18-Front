@@ -1,14 +1,21 @@
 <h1>Lista de Pets</h1>
 <div class="appointment-list">
     <section *ngFor="let atendimento of listaAtendimentos">
-        <h2> {{ atendimento.data}} </h2>
+        <h2> {{ atendimento.nome}} </h2>
         <span> Tutor: {{ atendimento.tutor }} </span>
         <br>
-        <span> Pet: {{ atendimento.nome }} </span>
+        <span> Data: {{ atendimento.data }} </span>
         <br>
-        <button id="Detalhar" (click)="detalharAtendimento(atendimento.id)">Detalhes</button>
-        <button id="Editar">Editar</button>
+        <div *ngIf="atendimento.exibirDetalhes">
+            <span> Tipo de animal: {{ atendimento.tipo }}</span>
+            <br>
+            <span> Raça: {{ atendimento.raca }}</span>
+            <br>
+            <span> Observações: {{ atendimento.obs }}</span>
+            <br>
+        </div>
 
-        <router-outlet></router-outlet>
+        <button id="Detalhar" (click)="detalharAtendimento( atendimento.id )">{{ atendimento.exibirDetalhes ? 'Esconder Detalhes' : 'Mostrar Detalhes' }}</button>
+        <button id="Editar" (click)="editarAtendimento( atendimento.id )">Editar</button>
     </section>
 </div>

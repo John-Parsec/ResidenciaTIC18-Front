@@ -6,4 +6,5 @@ export interface Atendimento {
     tipo: string;
     raca: string;
     obs: string;
+    exibirDetalhes: boolean;
 }

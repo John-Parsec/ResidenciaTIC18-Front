@@ -16,14 +16,24 @@ export class CadastrarAtendimentoComponent {
         'tutor':new FormControl(null, Validators.required),
         'nome':new FormControl(null, Validators.required),
         'tipo':new FormControl(null, Validators.required),
-        'raca':new FormControl("SRD")
+        'raca':new FormControl("SRD"),
+        'obs':new FormControl(null)
       })
   }
 
   ngOnInit(): void {}
 
   onSubmit() {
-    this.dataService.addAtendimento(this.cadastroForm.value);
+    if (this.cadastroForm.invalid) {
+      return;
+    }
+    
+    const dados = this.cadastroForm.value;
+    dados.id = this.dataService.getAtendimentos().length + 1;
+    dados.exibirDetalhes = false;
+
+    this.dataService.addAtendimento(dados);
     this.cadastroForm.reset();
+    this.cadastroForm.controls['raca'].setValue("SRD");
   }
 }

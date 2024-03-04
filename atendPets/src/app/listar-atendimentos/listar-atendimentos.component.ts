@@ -10,13 +10,17 @@ import { Router } from '@angular/router';
 export class ListarAtendimentosComponent {
   listaAtendimentos = this.dataService.getAtendimentos();
 
-  constructor(private dataService: ServiceBancoService, private rota: Router) { }
+  constructor(private dataService: ServiceBancoService, private router: Router) { }
 
   ngOnInit() {
     this.listaAtendimentos = this.dataService.getAtendimentos();
   }
 
   detalharAtendimento(id: number) {
-    this.rota.navigate(['/detalhe', id]);
+    this.listaAtendimentos[id - 1].exibirDetalhes = !this.listaAtendimentos[id - 1].exibirDetalhes;
+  }
+
+  editarAtendimento(_id: number) {
+    this.router.navigate(['/editar-atendimento'], { queryParams: { id: _id } });
   }
 }

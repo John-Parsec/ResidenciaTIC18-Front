@@ -25,4 +25,8 @@ export class ServiceBancoService {
     else
       return {} as Atendimento;
   }
+
+  editAtendimento(id: number, atendimento: Atendimento) {
+    this.listaAtendimentos[id - 1] = atendimento;
+  }
 }

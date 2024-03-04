@@ -8,13 +8,11 @@ import { ListarAtendimentosComponent } from './listar-atendimentos/listar-atendi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { EditarComponent } from './editar/editar.component';
-import { DetalharComponent } from './detalhar/detalhar.component';
 
 const rotasApp: Routes = [
   {path: 'cadastro', component: CadastrarAtendimentoComponent},
   {path: 'listar', component: ListarAtendimentosComponent},
-  {path: 'detalhar/:id', component: DetalharComponent},
-  {path: 'editar/:id', component: EditarComponent},
+  {path: 'editar-atendimento', component: EditarComponent},
 ]
 
 @NgModule({
@@ -22,8 +20,7 @@ const rotasApp: Routes = [
     AppComponent,
     CadastrarAtendimentoComponent,
     ListarAtendimentosComponent,
-    EditarComponent,
-    DetalharComponent
+    EditarComponent
   ],
   imports: [
     BrowserModule,
