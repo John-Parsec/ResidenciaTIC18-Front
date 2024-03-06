@@ -13,13 +13,15 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DetalhesComponent } from './detalhes/detalhes.component';
 import { AuthComponent } from './auth/auth.component';
 import { AutenticaInterceptor } from './autentica.interceptor';
-import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component'
+
+import { AuthGuard } from './auth.guard';
 
 const rotasApp: Routes = [
-  {path: 'cadastro', component: CadastrarAtendimentoComponent},
-  {path: 'listar', component: ListarAtendimentosComponent},
-  {path: 'detalhes', component: DetalhesComponent},
-  {path: 'editar-atendimento', component: EditarComponent},
+  {path: 'cadastro', component: CadastrarAtendimentoComponent, canActivate: [AuthGuard]},
+  {path: 'listar', component: ListarAtendimentosComponent, canActivate: [AuthGuard]},
+  {path: 'detalhes', component: DetalhesComponent, canActivate: [AuthGuard]},
+  {path: 'editar-atendimento', component: EditarComponent, canActivate: [AuthGuard]},
   {path: 'auth', component: AuthComponent}
 ]
 

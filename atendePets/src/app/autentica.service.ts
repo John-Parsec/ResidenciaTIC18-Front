@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, tap } from 'rxjs';
 import { Usuario } from './auth/usuario.model';
+import { environment } from '../environments/environment.custom';
 
 interface AuthResponseData {
   idToken: string;
@@ -11,7 +12,6 @@ interface AuthResponseData {
   localId: string;
   registered?: boolean;
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,9 @@ export class AutenticaService {
   constructor(private http: HttpClient) { }
 
   signupUser(email: string, password: string) {
-   return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[suachaveaqui]', 
+   const url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`;
+
+   return this.http.post<AuthResponseData>(url, 
    {
       email: email,
       password: password,
@@ -45,7 +47,9 @@ export class AutenticaService {
   }
 
   loginUser(email: string, password: string) {
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBbHrkiG6nZlw_1KEtq9senY33hAHhRz2c',
+    const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`;
+
+    return this.http.post<AuthResponseData>(url,
     {
       email: email,
       password: password,
@@ -95,5 +99,7 @@ export class AutenticaService {
     this.usuario.next(new Usuario('', '', '', new Date()));
   }
 
-
+  isLoggedIn() {
+    return this.usuario.value.token != null;
+  }
 }

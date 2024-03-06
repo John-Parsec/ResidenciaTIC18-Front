@@ -10,19 +10,35 @@
 
 nav {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.navbar-left {
+    flex: 1;
+}
+
+.navbar-left a {
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
     font-size: larger;
 }
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 20px;
+.navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
-nav a:hover {
-    text-decoration: underline;
+.navbar-right a {
+    margin-left: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-size: larger;
 }
 
 #main{
