@@ -1,0 +1,48 @@
+#header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+#header h1 {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    font-size: larger;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+#main{
+    min-height: 20rem;
+}
+
+#footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+#footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
+  

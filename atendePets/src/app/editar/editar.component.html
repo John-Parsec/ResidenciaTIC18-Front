@@ -1,0 +1,9 @@
+<form [formGroup]="editarForm" (ngSubmit)="onSubmit()" class="editar">
+    <input type="text" formControlName="tutor" placeholder="Nome do tutor">
+    <input type="text" formControlName="nome" placeholder="Nome do pet">
+    <input type="text" formControlName="tipo" placeholder="Tipo de animal">
+    <input type="text" formControlName="raca" placeholder="Raça">
+    <textarea formControlName="obs" placeholder="Observações"></textarea>
+    <br>
+    <input type="submit" value="Confirmar">
+</form>
