@@ -19,7 +19,7 @@ export class FormUserComponent{
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'full_name': new FormControl(null, [Validators.required]),
       'number': new FormControl(null, [Validators.required]),
-      'adress': new FormControl(null, [Validators.required]),
+      'address': new FormControl(null, [Validators.required]),
       'birthdate': new FormControl(null),
       'gender': new FormControl(null),
       'profession': new FormControl(null)
