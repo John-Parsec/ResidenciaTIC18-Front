@@ -1,0 +1,46 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Nome de usuário</mat-label>
+      <input matInput type="text" formControlName="username" placeholder="Nome de usuário">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Senha</mat-label>
+      <input matInput type="password" formControlName="password" placeholder="Senha">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="Email">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Nome completo</mat-label>
+      <input matInput type="text" formControlName="full_name" placeholder="Nome completo">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Número</mat-label>
+      <input matInput type="number" formControlName="number" placeholder="Número">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Data</mat-label>
+      <input matInput type="date" formControlName="birthdate" placeholder="Data">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Gênero</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option value="male">Masculino</mat-option>
+        <mat-option value="female">Feminino</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Ocupação</mat-label>
+      <input matInput type="text" formControlName="occupation" placeholder="Ocupação">
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>  
