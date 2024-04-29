@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Item } from '../../models/item';
 
 @Component({
@@ -9,6 +7,10 @@ import { Item } from '../../models/item';
   styleUrl: './list.component.css'
 })
 export class ListComponent {
+  constructor() { }
+
+  @Output() itemAdicionado = new EventEmitter<Item>();
+
   produtos: Item[] = [
     { id: 1, name: 'Alicate Wiha', price: 10.99, quantity: 1, imgURL: ''},
     { id: 2, name: 'Arroz 1Kg', price: 8.09, quantity: 2, imgURL: ''},
@@ -22,7 +24,11 @@ export class ListComponent {
     { id: 10, name: 'Gabinete', price: 100.87, quantity: 1, imgURL: ''}
   ];
 
+  itensDoCarrinho: Item[] = [];
 
-  
+  adcionaAoCarrinho(produto: Item) {
+    this.itensDoCarrinho.push(produto);
+    this.itemAdicionado.emit(produto);
+  }
 
 }
