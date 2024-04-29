@@ -6,17 +6,20 @@ import { Observable } from 'rxjs';
 import { selectorSelecionaTarefa } from '../store/tarefa.seletors';
 import { Tarefa } from '../tarefa.model';
 import { removerTarefa } from '../store/tarefa.actions';
+import { UpdateTarefaComponent } from '../update-tarefa/update-tarefa.component';
 
 @Component({
   selector: 'app-show-tarefas',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, UpdateTarefaComponent],
   templateUrl: './show-tarefas.component.html',
   styleUrls: ['./show-tarefas.component.css']
 })
 export class ShowTarefasComponent {
   tarefas: Tarefa[] = [{id: '1', descricao: 'Descrição 1'},];
   tasks$!: Observable<TarefaState>;
+  showUpdate = false;
+  tarefaSelecionada: Tarefa = {id: '', descricao: ''};
 
   constructor(private store:Store<{tarefas: TarefaState}>) { }
 
@@ -29,5 +32,15 @@ export class ShowTarefasComponent {
 
   removeTarefa(id: string) {
     this.store.dispatch(removerTarefa({id: id}));
+  }
+
+  updateTarefa(tarefa: Tarefa) {
+    this.tarefaSelecionada = tarefa;
+    this.showUpdate = true;
+  }
+
+  closeUpdate() {
+    this.showUpdate = false;
+    this.tarefaSelecionada = {id: '', descricao: ''};
   }
 }

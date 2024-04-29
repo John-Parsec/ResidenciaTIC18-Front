@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { Tarefa } from "../tarefa.model";
-import { adicionarTarefa, removerTarefa } from "./tarefa.actions";
+import { adicionarTarefa, removerTarefa, atualizarTarefa } from "./tarefa.actions";
 
 export interface TarefaState {
     tarefas: Tarefa[];
@@ -17,8 +17,7 @@ export const tarefasReducer = createReducer(
     estadoInicial,
     on(adicionarTarefa, (estado, action) => ({...estado, tarefas: [...estado.tarefas, action.tarefa]})),
     on(removerTarefa, (estado, action) => ({...estado, tarefas: estado.tarefas.filter(t => t.id !== action.id)})),
+    on(atualizarTarefa, (estado, action) => ({...estado, tarefas: estado.tarefas.map(t => t.id === action.tarefa.id ? action.tarefa : t)}))
 );
-
-
 
 

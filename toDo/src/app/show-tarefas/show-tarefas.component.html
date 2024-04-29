@@ -1,7 +1,10 @@
 
+<app-update-tarefa *ngIf="showUpdate" [tarefa]="tarefaSelecionada" [tarefaAtualizada]="tarefaSelecionada.descricao" (close)="closeUpdate()"></app-update-tarefa>
+
 <ul class="task-list">
-    <li *ngFor="let tarefa of tarefas" class="task-item">
-      {{ tarefa.descricao }}
-      <button (click)="removeTarefa(tarefa.id)" class="remove-button">Remover</button>
-    </li>
-  </ul>
+  <li *ngFor="let tarefa of tarefas" class="task-item">
+    {{ tarefa.descricao }}
+    <button (click)="updateTarefa(tarefa)" class="update-button">Atualizar</button>
+    <button (click)="removeTarefa(tarefa.id)" class="remove-button">Remover</button>
+  </li>
+</ul>

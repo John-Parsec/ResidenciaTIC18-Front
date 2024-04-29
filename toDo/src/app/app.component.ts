@@ -7,11 +7,12 @@ import { Observable } from 'rxjs';
 import { selectorSelecionaTarefa } from './store/tarefa.seletors';
 import { InputTarefaComponent } from './input-tarefa/input-tarefa.component';
 import { ShowTarefasComponent } from './show-tarefas/show-tarefas.component';
+import { UpdateTarefaComponent } from './update-tarefa/update-tarefa.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, InputTarefaComponent, ShowTarefasComponent],
+  imports: [CommonModule, RouterOutlet, InputTarefaComponent, ShowTarefasComponent, UpdateTarefaComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

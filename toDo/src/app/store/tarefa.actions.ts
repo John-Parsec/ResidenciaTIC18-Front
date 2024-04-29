@@ -13,3 +13,7 @@ export const removerTarefa = createAction(
 
 //To do
 //atualizarTarefa = 
+export const atualizarTarefa = createAction(
+    '[Tarefa] Atualizar Tarefa',
+    props<{ tarefa: Tarefa }>()
+);
